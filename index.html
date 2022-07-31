@@ -14,7 +14,20 @@
                 </ul>
             </nav>    
             <div class="title">
-                <h1 style="margin-bottom: 0;">Haziel Campos</h1>
+                <h1 style="margin-bottom: 0;" id="text"></h1>
+                <script>
+                    var i=0,text;
+                    text = " I'm Haziel Campos"
+
+                    function typeing(){
+                        if(i<text.length){
+                            document.getElementById("text").innerHTML += text.charAt(i);
+                            i++
+                            setTimeout(typeing, 250)
+                        }
+                    }
+                    typeing()
+                </script>
                 <div class="separator"></div>
                 <style>
                     .separator{
