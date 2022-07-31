@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+        <title>Digital Clock by Haziel</title>
+    </head>
+    <body>
+        <main class="container">
+            <nav>
+                <ul>
+                    <li><a href="/page/"><strong>Home</strong></a> > Projects > Digital Clock</li>
+                </ul>
+                <ul>
+                  <li><a href="https://github.com/HazielCode/page/blob/main/projects/digitalclock.html">View Code</a></li>
+                </ul>
+            </nav>  
+            <h1>Digital Clock</h1>
+            <center>
+                <article id="clockMain">
+                    <center>
+                        <h2 id="MyClockDisplay" class="clock" onload="showTime()"></h2>
+                        <div class="divisor"></div>
+                        <style>
+                            #MyClockDisplay {
+                                margin-bottom: 0;
+                            }
+                            #clockMain {
+                                border-radius: 180px;
+                            }
+                            article {
+                                width: 50vw;
+                                border-radius: 30px;
+                            }
+                            .divisor{
+                                width: 80px;
+                                border-style: solid;
+                                border-color: #1095c1;
+                                border-radius: 30px;
+                            }
+                        </style>
+                    </center>
+                </article>
+            </center>
+
+            <center>
+                <article>
+                    <h2 data-chronometer>00:00:00</h2>
+                    <script src="/page/projects/digitalclock.js"></script>
+                    <div class="grid">
+                        <button onclick="Stop()" class="secondary">Stop</button>
+                        <button onclick="Start()">Start</button>
+                        <button onclick="Reset()" class="secondary">Reset</button>
+                    </div>
+                </article>
+            </center>
+            
+        </main>
+
+        <script>
+            function showTime(){
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM";
+            
+            if(h == 0){
+                h = 12;
+            }
+            
+            if(h > 12){
+                h = h - 12;
+                session = "PM";
+            }
+            
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+            
+            var time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+            
+            setTimeout(showTime, 1000);
+            
+        }
+
+        showTime();
+        </script>
+    </body>
+</html>
