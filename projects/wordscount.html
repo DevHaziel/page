@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <title>Word Count!</title>
+  </head>
+  <body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li><a href="/page/"><strong>Home</strong></a> > Projects > Words Counter</li>
+            </ul>
+            <ul>
+              <li><a href="https://github.com/HazielCode/page/blob/main/projects/wordscount.html">View Code</a></li>
+            </ul>
+        </nav>  
+        <h1>Word count!</h1>
+        <div>
+            <textarea id="input" cols="1" rows="5" onblur="getWords()"></textarea>
+            <small>Words: <span id="word">0</span> | Characters: <span id="char">0</span></small>
+            <button onclick="getWords()">Count</button>
+        </div>
+        <script>
+            var input = document.querySelector("#input")
+            var wordsCount = document.querySelector("#word")
+            var charCount = document.querySelector("#char")
+
+            function getWords() {
+                var i = input.value
+                i = i.replace("\n", " ")
+                var c = i.split(' ').length;
+                charCount.innerHTML = i.length
+                if(i.length <= 0) return wordsCount.innerHTML = "0"
+                wordsCount.innerHTML = c.toString()
+            }
+        </script>
+    </main>
+  </body>
+</html>
